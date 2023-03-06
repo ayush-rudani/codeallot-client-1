@@ -1,5 +1,6 @@
 import NavBar from './components/Navbar';
 import Temp from './components/Temp';
+import Card from './components/Card';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
 
       <hr />
 
-      <Temp />
+      {/* <Temp /> */}
+
     </>
   )
 }
