@@ -12,7 +12,10 @@ function CreateCodex() {
     return (
         <>
             <div class="w-8/12 rounded-xl mx-auto mt-3">
-                <input type="email" id="helper-text" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Codex Discription" />
+
+                <input type="text" class="w-5/12 p-2 mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Codex Title" />
+
+                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Codex Discription" />
 
                 <div class="mt-5 w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <div class="border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 py-2">
@@ -23,11 +26,11 @@ function CreateCodex() {
                         </ul>
 
                     </div>
-                        <CodeMirror
-                            value="console.log('hello world!');"
-                            height="550px"
-                            onChange={onChange}
-                        />
+                    <CodeMirror
+                        value="console.log('hello world!');"
+                        height="525px"
+                        onChange={onChange}
+                    />
 
                 </div>
 
