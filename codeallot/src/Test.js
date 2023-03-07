@@ -1,10 +1,10 @@
 import CCard from './components/CCard';
-import Card from './components/Card';
+import CodexCard from './components/CodexCard';
 
 function Test() {
     return (
         <>
-            <Card />
+            <CodexCard />
             {/* <CCard /> */}
         </>
     )
