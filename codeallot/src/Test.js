@@ -1,8 +1,15 @@
+// eslint-disable-next-line
 import CCard from './components/CCard';
+// eslint-disable-next-line
 import CodexCard from './components/CodexCard';
+// eslint-disable-next-line
 import CreateCodex from './components/CreateCodex';
+// eslint-disable-next-line
 import Login from './components/Login';
+// eslint-disable-next-line
 import Register from './components/Register';
+import Temp from './components/Temp';
+import NavBar from './components/Navbar';
 
 function Test() {
     return (
@@ -10,8 +17,10 @@ function Test() {
             {/* <CodexCard /> */}
             {/* <CreateCodex /> */}
             {/* <CCard /> */}
-            <Login />
+            {/* <Login /> */}
             {/* <Register /> */}
+            {/* <Temp/> */}
+            <NavBar />
         </>
     )
 }
