@@ -10,10 +10,10 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <App /> */}
     {/* <App3 /> */}
-    <Test />
+    {/* <Test /> */}
   </React.StrictMode>
 );
 
