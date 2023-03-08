@@ -8,7 +8,7 @@ function CreateCodex() {
         console.log('value:', value);
     }, []);
 
-
+    
     return (
         <>
             <div class="w-8/12 rounded-xl mx-auto mt-5">
