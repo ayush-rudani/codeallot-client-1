@@ -38,7 +38,7 @@ export const newCodex = async (userid, title, description, filename, code) => {
     formData.append('description', description);
     formData.append('filename', filename);
     formData.append('content', JSON.stringify(code));
-    
+
     try {
         const res = await axios.post('api/Codex/', formData);
         return res;
@@ -48,10 +48,21 @@ export const newCodex = async (userid, title, description, filename, code) => {
 }
 
 
-        // const res = await axios.post('api/Codex/', {
-        //     title: title,
-        //     userid: userid,
-        //     description: description,
-        //     filename: filename,
-        //     content: content
-        // });
+// const res = await axios.post('api/Codex/', {
+//     title: title,
+//     userid: userid,
+//     description: description,
+//     filename: filename,
+//     content: content
+// });
+
+
+
+export const getCodexByUserid = async (userid) => {
+    try {
+        const res = await axios.get(`api/Codex/c/${userid}`);
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
