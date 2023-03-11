@@ -27,3 +27,31 @@ export const Signin = async (email, password) => {
         return error;
     }
 }
+
+
+export const newCodex = async (userid, title, description, filename, code) => {
+    // console.log("=> " + userid, title, description, filename, code)
+    const formData = new FormData();
+
+    formData.append('userid', userid);
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('filename', filename);
+    formData.append('content', JSON.stringify(code));
+    
+    try {
+        const res = await axios.post('api/Codex/', formData);
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
+
+
+        // const res = await axios.post('api/Codex/', {
+        //     title: title,
+        //     userid: userid,
+        //     description: description,
+        //     filename: filename,
+        //     content: content
+        // });
