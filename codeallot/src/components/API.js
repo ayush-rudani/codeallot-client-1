@@ -15,3 +15,15 @@ export const Signup = async (email, password, name, linkedin, github) => {
         return error;
     }
 }
+
+export const Signin = async (email, password) => {
+    try {
+        const res = await axios.post('api/Users/Login', {
+            email: email,
+            password: password
+        });
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
