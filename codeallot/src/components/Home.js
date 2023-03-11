@@ -39,7 +39,7 @@ function Home(props) {
 
             {loading ? (<div className="flex justify-center items-center h-screen"><InfinitySpin width='200' color="#4fa94d" /></div>) :
                 (<div class="space-y-4 w-7/12 mt-10 mx-auto mb-8">
-                    {codex.map((item) => (<CCard key={item.id} id={item.id} title={item.title} description={item.description} />))}
+                    {codex.map((item) => (<CCard key={item.id} codex={item} />))}
                 </div>)
             }
 
