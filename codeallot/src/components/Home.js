@@ -15,7 +15,7 @@ function Home(props) {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(response.data)
+        // console.log(response.data)
         setCodex(response.data);
         setLoading(false);
 
@@ -45,26 +45,6 @@ function Home(props) {
                     {codex.map((item) => (<CCard key={item.id} codex={item} />))}
                 </div>)
             }
-
-            {/* <div className="space-y-4 w-7/12 mt-10 mx-auto mb-8">
-                {!loading ? (
-                    codex.length > 0 ? (
-                        codex.map((item) => (
-                            <CCard key={item.id} id={item.id} title={item.title} description={item.description} />
-                        ))
-
-                    ) : ('No Codex Found')
-                ) : (<InfinitySpin />)
-                }
-
-            </div> */}
-
-
-            {/* <div className="space-y-4 w-7/12 mt-10 mx-auto mb-8">
-                <CCard />
-                <CCard />
-                <CCard />
-            </div> */}
         </>
     );
 }
