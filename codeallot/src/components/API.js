@@ -48,6 +48,17 @@ export const newCodex = async (userid, title, description, filename, code) => {
 }
 
 
+
+export const getCodexByid = async (cid) => {
+    try {
+        const res = await axios.get(`/api/Codex/${cid}`);
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
+
+
 // const res = await axios.post('api/Codex/', {
 //     title: title,
 //     userid: userid,

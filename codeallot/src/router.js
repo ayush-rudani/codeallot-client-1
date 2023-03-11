@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import CreateCodex from "./components/CreateCodex";
 import YourCodex from "./components/YourCodex";
+import CodexCard from "./components/CodexCard";
 
 
 const router = createBrowserRouter
@@ -31,6 +32,10 @@ const router = createBrowserRouter
         {
             path: "/yourcodex",
             element: <YourCodex />,
+        },
+        {
+            path: "/c/:id",
+            element: <CodexCard />,
         }
     ]);
 
