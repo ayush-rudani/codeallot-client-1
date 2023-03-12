@@ -103,7 +103,7 @@ function CodexCard(props) {
 
                         <hr />
 
-                        <div className="mt-5 w-7/12 mx-auto bg-white border-[3px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div className="mt-5 mb-7 w-7/12 mx-auto bg-white border-[3px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                             <ul className="hidden text-sm font-medium text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400">
                                 <li className="">
@@ -114,11 +114,12 @@ function CodexCard(props) {
                             <div id="fullWidthTabContent" className="border-t border-gray-200 dark:border-gray-600">
                                 <div className="bg-white rounded-lg dark:bg-gray-800" >
                                     {/* <div dangerouslySetInnerHTML={{ __html: marked(markdown) }}></div> */}
-                                    <CodeMirror className="overscroll-none" value={code} name="content" height="500px" id="content"
+                                    <CodeMirror className="" value={code} name="content" id="content"
                                     />
                                 </div>
                             </div>
                         </div>
+                        <hr className="mb-5"/>
                     </div>
                 )}
 
