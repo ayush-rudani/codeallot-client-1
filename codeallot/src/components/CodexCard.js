@@ -42,6 +42,7 @@ function CodexCard(props) {
 
 
     function copyToClipboard(e) {
+        console.log("Copy clicked!!")
         copy(codex.link);
         toast.success('Copied to clipboard!');
 
@@ -67,22 +68,22 @@ function CodexCard(props) {
                                 <ol className="inline-flex items-center mb-3 space-x-1 md:space-x-3 sm:mb-0">
                                     <img className="rounded-full w-10 h-10" src={`https://ui-avatars.com/api/?name=${codex.userName}`} />
                                     <li>
-                                        <div class="flex items-center">
-                                            <a href="#" class="ml-1 text-lg font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.userName}</a>
+                                        <div className="flex items-center">
+                                            <a href="#" className="ml-1 text-lg font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.userName}</a>
                                         </div>
                                     </li>
                                     <li aria-current="page">
-                                        <div class="flex items-center">
+                                        <div className="flex items-center">
                                             /
-                                            <a href="#" class="ml-1 text-lg font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.title}</a>
+                                            <a href={`/c/${codex.id}`} className="ml-1 text-lg font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.title}</a>
                                         </div>
                                     </li>
 
                                 </ol>
                                 <div className="flex items-end space-x-3">
-                                    <button id="dropdownDefault" class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Edit
+                                    <button id="dropdownDefault" className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Edit
                                     </button>
-                                    <button id="dropdownDefault" class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Delete
+                                    <button id="dropdownDefault" className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Delete
                                     </button>
                                 </div>
                             </div>
@@ -90,12 +91,12 @@ function CodexCard(props) {
                             <div className="p-3 mx-10 flex justify-between align-middle">
                                 <div className="align-middle py-2"><FontAwesomeIcon className="mx-3 align-middle" icon={faCode} />Code</div>
                                 <div className="w-3/12">
-                                    <div class="flex">
-                                        {/* <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">Link</span> */}
+                                    <div className="flex">
+                                        {/* <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">Link</span> */}
 
-                                        <input type="text" id="website-admin" ref={textAreaRef} class="rounded-none rounded-l-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={codex.link} placeholder={codex.link} disabled />
+                                        <input type="text" id="website-admin" ref={textAreaRef} className="rounded-none rounded-l-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={codex.link} placeholder={codex.link} disabled />
 
-                                        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600 hover:border-black hover:text-gray-500"><FontAwesomeIcon icon={faCopy} onClick={copyToClipboard} /></span>
+                                        <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600 hover:border-black hover:text-gray-500" onClick={copyToClipboard}><FontAwesomeIcon icon={faCopy} /></span>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +120,7 @@ function CodexCard(props) {
                                 </div>
                             </div>
                         </div>
-                        <hr className="mb-5"/>
+                        <hr className="mb-5" />
                     </div>
                 )}
 
