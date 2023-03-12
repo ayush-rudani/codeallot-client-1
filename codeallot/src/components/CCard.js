@@ -9,7 +9,7 @@ function CCard(props) {
                 <div className="border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 py-2">
                     <ul className="flex flex-wrap font-medium text-center text-gray-500">
                         <li className="mr-2">
-                            <button type="button" className="inline-block px-4 text-blue-600 rounded-tl-lg hover:bg-gray-100 text-base dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500">username: {props.codex.createdBy}</button>
+                            <button type="button" className="inline-block px-4 text-blue-600 rounded-tl-lg hover:bg-gray-100 text-base dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500">{props.codex.userName}</button>
                         </li>
                     </ul>
                     <p className="text-sm text-gray-500 dark:text-gray-400 px-4">Last updated on {props.codex.createdAt.slice(0, 10)}</p>

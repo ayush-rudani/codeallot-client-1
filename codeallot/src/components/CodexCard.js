@@ -1,6 +1,6 @@
 import "highlight.js/styles/github.css";
 import hljs from "highlight.js";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 // import { marked } from "marked";
 import { useParams } from "react-router-dom";
 import { getCodexByid } from './API';
@@ -19,6 +19,7 @@ function CodexCard(props) {
     const [codex, setCodex] = useState();
     const [loading, setLoading] = useState(true);
     const [code, setCode] = useState();
+    const textAreaRef = useRef(null);
 
     async function getCodex() {
         getCodexByid(id).then((res) => {
@@ -39,8 +40,22 @@ function CodexCard(props) {
         hljs.highlightAll();
     }, []);
 
+
+    function copyToClipboard(e) {
+        console.log(textAreaRef.current.select);
+        textAreaRef.current.select();
+        document.execCommand('copy');
+        console.log()
+        e.target.focus();
+        toast.success('Copied to clipboard!');
+    }
+
     return (
         <>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             {loading ? (<div className="flex justify-center items-center h-screen"><InfinitySpin width='200' color="#4fa94d" /></div>) :
                 (
                     <div>
@@ -50,13 +65,13 @@ function CodexCard(props) {
                                     <img className="rounded-full w-10 h-10" src={`https://ui-avatars.com/api/?name=${codex.userName}`} />
                                     <li>
                                         <div class="flex items-center">
-                                            <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.userName}</a>
+                                            <a href="#" class="ml-1 text-lg font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.userName}</a>
                                         </div>
                                     </li>
                                     <li aria-current="page">
                                         <div class="flex items-center">
                                             /
-                                            <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.title}</a>
+                                            <a href="#" class="ml-1 text-lg font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{codex.title}</a>
                                         </div>
                                     </li>
 
@@ -64,20 +79,20 @@ function CodexCard(props) {
                                 <div className="flex items-end space-x-3">
                                     <button id="dropdownDefault" class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Edit
                                     </button>
-                                    <button id="dropdownDefault"  class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Delete
+                                    <button id="dropdownDefault" class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Delete
                                     </button>
                                 </div>
                             </div>
 
                             <div className="p-3 mx-10 flex justify-between align-middle">
                                 <div className="align-middle py-2"><FontAwesomeIcon className="mx-3 align-middle" icon={faCode} />Code</div>
-                                <div className="">
+                                <div className="w-3/12">
                                     <div class="flex">
                                         {/* <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">Link</span> */}
 
-                                        <input type="text" id="website-admin" class="rounded-none  bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={codex.link} disabled/>
+                                        <input type="text" id="website-admin" ref={textAreaRef} class="rounded-none rounded-l-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={codex.link} placeholder={codex.link} disabled />
 
-                                        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"><FontAwesomeIcon icon={faCopy} /></span>
+                                        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600 hover:border-black hover:text-gray-500"><FontAwesomeIcon icon={faCopy} onClick={copyToClipboard} /></span>
                                     </div>
                                 </div>
                             </div>
