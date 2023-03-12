@@ -9,13 +9,13 @@ import { InfinitySpin } from 'react-loader-spinner';
 import CodeMirror from '@uiw/react-codemirror';
 import { faCode, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import copy from "copy-to-clipboard";
+import './cc.css'
 
 
 function CodexCard(props) {
 
     const { id } = useParams()
-    let imgLink = "";
     const [codex, setCodex] = useState();
     const [loading, setLoading] = useState(true);
     const [code, setCode] = useState();
@@ -42,12 +42,15 @@ function CodexCard(props) {
 
 
     function copyToClipboard(e) {
-        console.log(textAreaRef.current.select);
-        textAreaRef.current.select();
-        document.execCommand('copy');
-        console.log()
-        e.target.focus();
+        copy(codex.link);
         toast.success('Copied to clipboard!');
+
+        // console.log(textAreaRef.current.select);
+        // textAreaRef.current.select();
+        // document.execCommand('copy');
+        // console.log()
+        // e.target.focus();
+        // toast.success('Copied to clipboard!');
     }
 
     return (
@@ -109,9 +112,9 @@ function CodexCard(props) {
 
                             </ul>
                             <div id="fullWidthTabContent" className="border-t border-gray-200 dark:border-gray-600">
-                                <div className="p-1 bg-white rounded-lg dark:bg-gray-800" >
+                                <div className="bg-white rounded-lg dark:bg-gray-800" >
                                     {/* <div dangerouslySetInnerHTML={{ __html: marked(markdown) }}></div> */}
-                                    <CodeMirror value={code} name="content" height="500px" id="content"
+                                    <CodeMirror className="overscroll-none" value={code} name="content" height="500px" id="content"
                                     />
                                 </div>
                             </div>
