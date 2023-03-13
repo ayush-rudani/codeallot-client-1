@@ -59,13 +59,6 @@ function CodexCard(props) {
     console.log("Copy clicked!!");
     copy(codex.link);
     toast.success("Copied to clipboard!");
-
-    // console.log(textAreaRef.current.select);
-    // textAreaRef.current.select();
-    // document.execCommand('copy');
-    // console.log()
-    // e.target.focus();
-    // toast.success('Copied to clipboard!');
   }
 
   return (

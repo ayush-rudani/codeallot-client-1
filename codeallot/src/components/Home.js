@@ -17,14 +17,6 @@ function Home(props) {
     console.log(response.data);
     setCodex(response.data);
     setLoading(false);
-
-    // axios.get("/api/Codex/", {
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // }).then((response) => {
-    //     console.log(response.data);
-    // });
   }
 
   useEffect(() => {

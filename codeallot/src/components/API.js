@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const Signup = async (email, password, name, linkedin, github) => {
   try {
     const res = await axios.post("api/Users/Register", {
@@ -15,6 +16,7 @@ export const Signup = async (email, password, name, linkedin, github) => {
   }
 };
 
+
 export const Signin = async (email, password) => {
   try {
     const res = await axios.post("api/Users/Login", {
@@ -27,10 +29,10 @@ export const Signin = async (email, password) => {
   }
 };
 
+
 export const newCodex = async (userid, title, description, filename, code) => {
   // console.log("=> " + userid, title, description, filename, code)
   const formData = new FormData();
-
   formData.append("userid", userid);
   formData.append("title", title);
   formData.append("description", description);
@@ -45,6 +47,7 @@ export const newCodex = async (userid, title, description, filename, code) => {
   }
 };
 
+
 export const getCodexByid = async (cid) => {
   try {
     const res = await axios.get(`/api/Codex/${cid}`);
@@ -54,13 +57,6 @@ export const getCodexByid = async (cid) => {
   }
 };
 
-// const res = await axios.post('api/Codex/', {
-//     title: title,
-//     userid: userid,
-//     description: description,
-//     filename: filename,
-//     content: content
-// });
 
 export const getCodexByUserid = async (userid) => {
   try {
@@ -70,6 +66,7 @@ export const getCodexByUserid = async (userid) => {
     return error;
   }
 };
+
 
 export const deleteCodex = async (cid) => {
   try {

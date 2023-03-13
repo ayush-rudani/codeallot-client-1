@@ -44,21 +44,6 @@ function CreateCodex() {
     }
   };
 
-  // if (!value.title || !value.discription || !value.filename || !code) {
-  //     toast.error('Please fill all the fields');
-  // } else {
-  //     CreateCodex(value.userid, value.title, value.discription, value.filename, value.content).then((res) => {
-  //         console.log(res);
-  //         if (res.status === 200) {
-  //             toast.success('Codex Created');
-  //             navigate('/');
-  //         } else {
-  //             toast.error('Codex Creation Failed');
-  //             toast.error(res.response.data);
-  //         }
-  //     }).catch((err) => { console.log(err) });
-  // }
-
   const handleInputs = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
