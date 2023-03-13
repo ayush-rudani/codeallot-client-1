@@ -11,6 +11,11 @@ export default function NavBar() {
     }
   }
 
+  async function logout() {
+    window.localStorage.removeItem("user");
+    window.location.reload();
+  }
+
   useEffect(() => {
     getUserData();
   });
