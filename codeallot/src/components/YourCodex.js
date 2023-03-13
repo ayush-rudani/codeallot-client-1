@@ -81,7 +81,7 @@ function YourCodex() {
                 </div>
 
                 <div className="py-5 w-9/12 px-14 space-y-3">
-                    {loading ? (<div className="flex justify-center items-center h-screen"><InfinitySpin width='200' color="#4fa94d" /></div>) : (codex.map((item) => (<CCard key={item.id} codex={item} />)))}
+                    {loading ? (<div className="flex justify-center items-center h-screen"><InfinitySpin width='200' color="#0652e9" /></div>) : (codex.map((item) => (<CCard key={item.id} codex={item} />)))}
                 </div>
 
             </div>
