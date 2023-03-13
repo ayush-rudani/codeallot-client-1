@@ -7,7 +7,7 @@ import { getCodexByid } from './API';
 import toast, { Toaster } from 'react-hot-toast';
 import { InfinitySpin } from 'react-loader-spinner';
 import CodeMirror from '@uiw/react-codemirror';
-import { faCode, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faCopy, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import copy from "copy-to-clipboard";
 import './cc.css'
@@ -60,7 +60,7 @@ function CodexCard(props) {
                 position="top-center"
                 reverseOrder={false}
             />
-            {loading ? (<div className="flex justify-center items-center h-screen"><InfinitySpin width='200' color="#4fa94d" /></div>) :
+            {!loading ? (<div className="flex justify-center items-center h-screen"><InfinitySpin width='200' color="#0652e9" /></div>) :
                 (
                     <div>
                         <div>
@@ -81,9 +81,9 @@ function CodexCard(props) {
 
                                 </ol>
                                 <div className="flex items-end space-x-3">
-                                    <button id="dropdownDefault" className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Edit
+                                    <button id="dropdownDefault" className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"><FontAwesomeIcon icon={faEdit} /> Edit
                                     </button>
-                                    <button id="dropdownDefault" className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700">Delete
+                                    <button id="dropdownDefault" className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"><FontAwesomeIcon icon={faTrash} /> Delete
                                     </button>
                                 </div>
                             </div>

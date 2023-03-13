@@ -15,7 +15,7 @@ import Home from './components/Home';
 function Test() {
     return (
         <>
-            {/* <CodexCard /> */}
+            <CodexCard />
             {/* <CreateCodex /> */}
             {/* <CCard /> */}
             {/* <Login /> */}
