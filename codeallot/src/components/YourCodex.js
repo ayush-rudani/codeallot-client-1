@@ -8,9 +8,9 @@ import { InfinitySpin } from "react-loader-spinner";
 function YourCodex() {
   const [codex, setCodex] = useState([]);
   const [loading, setLoading] = useState(true);
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   async function fetchCodexByUserid() {
-    const user = JSON.parse(window.localStorage.getItem("user"));
     if (user.id != null) {
       getCodexByUserid(user.id)
         .then((res) => {

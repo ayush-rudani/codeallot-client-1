@@ -27,7 +27,7 @@ function CodexCard(props) {
       .then((res) => {
         console.log(res.data);
         setCodex(res.data);
-        let imgLink = `https://api.dicebear.com/5.x/initials/svg?seed=${res.data.userName}`;
+        // let imgLink = `https://api.dicebear.com/5.x/initials/svg?seed=${res.data.userName}`;
         setCode(res.data.content);
         setLoading(false);
       })
@@ -64,11 +64,12 @@ function CodexCard(props) {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      {!loading ? (
+      {loading ? (
         <div className="flex justify-center items-center h-screen">
           <InfinitySpin width="200" color="#0652e9" />
         </div>
       ) : (
+        
         <div>
           <div>
             <div
