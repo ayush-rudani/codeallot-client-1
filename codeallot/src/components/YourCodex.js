@@ -11,6 +11,7 @@ function YourCodex() {
   const user = JSON.parse(window.localStorage.getItem("user"));
 
   async function fetchCodexByUserid() {
+    console.log(user);
     if (user.id != null) {
       getCodexByUserid(user.id)
         .then((res) => {
@@ -49,16 +50,16 @@ function YourCodex() {
                 alt=""
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                Name
+                {user.name}
               </h5>
 
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                username
+                {user.status}
               </span>
 
-              <p className="text-lg font-medium text-gray-900 dark:text-white">
+              {/* <p className="text-lg font-medium text-gray-900 dark:text-white">
                 Status
-              </p>
+              </p> */}
 
               <div className="container block text-center">
                 <span className="font-medium text-gray-600">GitHub: </span>
@@ -66,7 +67,7 @@ function YourCodex() {
                   href="#"
                   className=" text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  link
+                  {user.github}
                 </a>
               </div>
 
@@ -76,7 +77,7 @@ function YourCodex() {
                   href="#"
                   className=" text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  link
+                  {user.linkedin}
                 </a>
               </div>
 

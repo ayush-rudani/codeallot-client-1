@@ -76,3 +76,14 @@ export const deleteCodex = async (cid) => {
     return error;
   }
 };
+
+
+
+export const getUserById = async (userid) => {
+  try {
+    const res = await axios.get(`api/Users/${userid}`);
+    return res;
+  } catch (error) {
+    return error;
+  }
+}
