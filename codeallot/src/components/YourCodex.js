@@ -1,19 +1,20 @@
 import CCard from "./CCard";
 import React from "react";
 import { useEffect, useState } from "react";
-import { getCodexByUserid } from "./API";
+import { getCodexByUserid, getUserById } from "./API";
 import toast, { Toaster } from "react-hot-toast";
 import { InfinitySpin } from "react-loader-spinner";
 
 function YourCodex() {
   const [codex, setCodex] = useState([]);
   const [loading, setLoading] = useState(true);
-  const user = JSON.parse(window.localStorage.getItem("user"));
+  const userLoggedin = JSON.parse(window.localStorage.getItem("user"));
+  const [user, setUser] = useState({});
 
   async function fetchCodexByUserid() {
-    console.log(user);
-    if (user.id != null) {
-      getCodexByUserid(user.id)
+
+    if (userLoggedin.id != null) {
+      getCodexByUserid(userLoggedin.id)
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
@@ -31,8 +32,28 @@ function YourCodex() {
     }
   }
 
+
+  async function fetchUserById() {
+    if (userLoggedin.id != null) {
+      getUserById(userLoggedin.id).then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          setUser(res.data);
+        } else {
+          toast.error(res.response.data);
+        }
+      });
+    }
+    else {
+      toast.error("Please Login to see Codex");
+    }
+  }
+
+
+
   useEffect(() => {
     fetchCodexByUserid();
+    fetchUserById();
   }, []);
 
   return (
@@ -41,7 +62,7 @@ function YourCodex() {
 
       <div className="flex">
         <div className="w-3/12">
-          <div className="w-full max-w-sm mx-auto mt-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="w-full max-w-xs mx-auto mt-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="flex justify-end px-4 pt-4"></div>
             <div className="flex flex-col items-center pb-10 space-y-3">
               <img
@@ -83,7 +104,7 @@ function YourCodex() {
 
               <div className="container block text-center">
                 <span className="font-bold">Codex Count: </span>
-                <span className="font-mono text-neutral-700">0</span>
+                <span className="font-mono text-neutral-700">{user.codexCount}</span>
               </div>
 
               {/* <div className="flex mt-4 space-x-3 md:mt-6">
