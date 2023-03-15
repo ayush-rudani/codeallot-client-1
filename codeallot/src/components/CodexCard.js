@@ -36,7 +36,7 @@ function CodexCard(props) {
       });
   }
 
-  async function deleteCodex() {
+  async function deletethisCodex() {
     deleteCodex(id).then((res) => {
       console.log(res);
       if (res.status === 200) {
@@ -44,7 +44,7 @@ function CodexCard(props) {
         setLoading(true);
         setTimeout(() => {
           navigate("/");
-        }, 2000);
+        }, 1500);
       } else {
         toast.error(res.response.data);
       }
@@ -69,7 +69,7 @@ function CodexCard(props) {
           <InfinitySpin width="200" color="#0652e9" />
         </div>
       ) : (
-        
+
         <div>
           <div>
             <div
@@ -108,13 +108,13 @@ function CodexCard(props) {
                   id="dropdownDefault"
                   className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"
                 >
-                  <FontAwesomeIcon icon={faEdit} /> Edit
+                  <FontAwesomeIcon icon={faEdit} className="mx-2" /> Edit
                 </button>
                 <button
-                  id="dropdownDefault"
+                  id="dropdownDefault" onClick={deletethisCodex}
                   className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"
                 >
-                  <FontAwesomeIcon icon={faTrash} /> Delete
+                  <FontAwesomeIcon icon={faTrash} className="mx-2" /> Delete
                 </button>
               </div>
             </div>

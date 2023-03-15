@@ -14,7 +14,6 @@ function Home(props) {
         "Content-Type": "application/json",
       },
     });
-    console.log(response.data);
     setCodex(response.data);
     setLoading(false);
   }

@@ -70,7 +70,7 @@ export const getCodexByUserid = async (userid) => {
 
 export const deleteCodex = async (cid) => {
   try {
-    const res = await axios.delete(`api/Codex/${cid}`);
+    const res = await axios.delete(`/api/Codex/${cid}`);
     return res;
   } catch (error) {
     return error;
