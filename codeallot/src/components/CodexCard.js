@@ -27,6 +27,7 @@ function CodexCard(props) {
     getCodexByid(id)
       .then((res) => {
         console.log(res.data);
+        // console.log(userLoggedin);
         setCodex(res.data);
         // let imgLink = `https://api.dicebear.com/5.x/initials/svg?seed=${res.data.userName}`;
         setCode(res.data.content);
@@ -105,21 +106,22 @@ function CodexCard(props) {
                 </li>
               </ol>
 
-        
-              <div className="flex items-end space-x-3">
-                <button
-                  id="dropdownDefault"
-                  className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"
-                >
-                  <FontAwesomeIcon icon={faEdit} className="mx-2" /> Edit
-                </button>
-                <button
-                  id="dropdownDefault" onClick={deletethisCodex}
-                  className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"
-                >
-                  <FontAwesomeIcon icon={faTrash} className="mx-2" /> Delete
-                </button>
-              </div>
+              {codex.userName == userLoggedin.name ? (
+                <div className="flex items-end space-x-3">
+                  <button
+                    id="dropdownDefault"
+                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"
+                  >
+                    <FontAwesomeIcon icon={faEdit} className="mx-2" /> Edit
+                  </button>
+                  <button
+                    id="dropdownDefault" onClick={deletethisCodex}
+                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"
+                  >
+                    <FontAwesomeIcon icon={faTrash} className="mx-2" /> Delete
+                  </button>
+                </div>) : (<></>)}
+
             </div>
 
             <div className="p-3 mx-10 flex justify-between align-middle">
