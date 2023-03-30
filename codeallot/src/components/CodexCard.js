@@ -21,6 +21,7 @@ function CodexCard(props) {
   const [loading, setLoading] = useState(true);
   const [code, setCode] = useState();
   const textAreaRef = useRef(null);
+  const userLoggedin = JSON.parse(window.localStorage.getItem("user"));
 
   async function getCodex() {
     getCodexByid(id)
@@ -103,6 +104,8 @@ function CodexCard(props) {
                   </div>
                 </li>
               </ol>
+
+        
               <div className="flex items-end space-x-3">
                 <button
                   id="dropdownDefault"

@@ -10,13 +10,15 @@ function YourCodex() {
   const [loading, setLoading] = useState(true);
   const userLoggedin = JSON.parse(window.localStorage.getItem("user"));
   const [user, setUser] = useState({});
+  let [avatarLink, setAvatarLink] = useState();
+
 
   async function fetchCodexByUserid() {
 
     if (userLoggedin.id != null) {
       getCodexByUserid(userLoggedin.id)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setCodex(res.data);
             setLoading(false);
@@ -36,9 +38,12 @@ function YourCodex() {
   async function fetchUserById() {
     if (userLoggedin.id != null) {
       getUserById(userLoggedin.id).then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           setUser(res.data);
+          let n = res.data.name;
+          n = n.replace(/ /g, '');
+          setAvatarLink(`https://api.dicebear.com/5.x/initials/svg?seed=${n}`);
         } else {
           toast.error(res.response.data);
         }
@@ -67,7 +72,7 @@ function YourCodex() {
             <div className="flex flex-col items-center pb-10 space-y-3">
               <img
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="https://api.dicebear.com/5.x/initials/svg?seed=A"
+                src={"" + avatarLink}
                 alt=""
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">

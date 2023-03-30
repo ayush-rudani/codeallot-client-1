@@ -92,6 +92,11 @@ export default function NavBar() {
                       Logout
                     </a>
                   </li>
+                  <li>
+                    <a>
+                      <img className="w-10 h-10 rounded-full" src="https://api.dicebear.com/5.x/initials/svg?seed=A" alt="Rounded avatar" />
+                    </a>
+                  </li>
                 </>
               )}
 
