@@ -22,16 +22,19 @@ function CodexCard(props) {
   const [code, setCode] = useState();
   const textAreaRef = useRef(null);
   const userLoggedin = JSON.parse(window.localStorage.getItem("user"));
+  const editorRef = useRef();
+  const [isEditable, setEditable] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   async function getCodex() {
     getCodexByid(id)
       .then((res) => {
         console.log(res.data);
-        // console.log(userLoggedin);
         setCodex(res.data);
         // let imgLink = `https://api.dicebear.com/5.x/initials/svg?seed=${res.data.userName}`;
         setCode(res.data.content);
         setLoading(false);
+        console.log(editorRef.current);
       })
       .catch((error) => {
         console.log(error);
@@ -44,13 +47,21 @@ function CodexCard(props) {
       if (res.status === 200) {
         toast.success("Codex deleted successfully");
         setLoading(true);
+
         setTimeout(() => {
           navigate("/");
         }, 1500);
+        
       } else {
         toast.error(res.response.data);
       }
     });
+  }
+
+  function enterEditMode() {
+    setEditable(true);
+    setEditMode(true);
+    toast("Enterd Editing mode!!", { icon: "📝" });
   }
 
   useEffect(() => {
@@ -72,7 +83,7 @@ function CodexCard(props) {
         </div>
       ) : (
 
-        <div>
+        <div className="mb-2">
           <div>
             <div
               className="justify-between px-4 py-3 border-gray-200 rounded-lg sm:flex sm:px-5 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
@@ -111,6 +122,7 @@ function CodexCard(props) {
                   <button
                     id="dropdownDefault"
                     className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:focus:ring-gray-700"
+                    onClick={enterEditMode}
                   >
                     <FontAwesomeIcon icon={faEdit} className="mx-2" /> Edit
                   </button>
@@ -177,12 +189,20 @@ function CodexCard(props) {
                   className=""
                   value={code}
                   name="content"
-                  id="content"
+                  id="content" editable={isEditable} ref={editorRef}
                 />
               </div>
             </div>
+
+            {editMode ? (<a
+              type="button"
+              href=""
+              className="my-5 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center float-right"
+            >
+              Save Changes
+            </a>) : (<></>)}
           </div>
-          <hr className="mb-5" />
+          {/* <hr className="mb-5" /> */}
         </div>
       )}
     </>

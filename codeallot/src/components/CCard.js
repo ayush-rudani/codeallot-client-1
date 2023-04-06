@@ -34,7 +34,7 @@ function CCard(props) {
               {props.codex.description}
             </p>
             <a
-              href="#"
+              href={"c/" + props.codex.id}
               className="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700"
             >
               See Coddex
